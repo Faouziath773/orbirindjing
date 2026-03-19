@@ -368,7 +368,11 @@ export default function Admin() {
                 </div>
               </div>
               <div className="form-actions">
-                <button className="cta" type="button" onClick={loadCandidates}>
+                <button
+                  className="cta"
+                  type="button"
+                  onClick={() => loadCandidates()}
+                >
                   Rafraîchir candidatures
                 </button>
                 <button className="cta" type="button" onClick={loadStats}>

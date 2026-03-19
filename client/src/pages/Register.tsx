@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import api from "../lib/api";
 
 type RegisterForm = {
@@ -25,7 +24,6 @@ const initialForm: RegisterForm = {
 };
 
 export default function Register() {
-  const navigate = useNavigate();
   const [form, setForm] = useState<RegisterForm>(initialForm);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
