@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../lib/api";
+import { useI18n } from "../lib/i18n";
 
 export default function Success() {
+  const { t } = useI18n();
   const [status, setStatus] = useState<
     "loading" | "confirmed" | "pending" | "missing" | "error"
   >("loading");
@@ -43,23 +45,18 @@ export default function Success() {
       <div className="success-card">
         <h1 className="section-title">
           {status === "confirmed"
-            ? "Inscription confirmée."
-            : "Confirmation du paiement."}
+            ? t("success.titleConfirmed")
+            : t("success.titleDefault")}
         </h1>
         <p className="hero-text">
-          {status === "loading" &&
-            "Nous finalisons la validation de ton paiement..."}
-          {status === "confirmed" &&
-            "Merci pour ta confiance ! Nous te contactons très vite pour la suite du programme."}
-          {status === "pending" &&
-            "Le paiement est enregistré, la confirmation peut prendre quelques minutes. Tu peux rafraîchir cette page."}
-          {status === "missing" &&
-            "Impossible de retrouver la transaction. Contacte l'équipe si tu as déjà payé."}
-          {status === "error" &&
-            "Une erreur est survenue lors de la confirmation. Réessaie dans quelques instants."}
+          {status === "loading" && t("success.text.loading")}
+          {status === "confirmed" && t("success.text.confirmed")}
+          {status === "pending" && t("success.text.pending")}
+          {status === "missing" && t("success.text.missing")}
+          {status === "error" && t("success.text.error")}
         </p>
         <Link className="cta" to="/">
-          Retour à l'accueil
+          {t("success.backHome")}
         </Link>
       </div>
     </main>

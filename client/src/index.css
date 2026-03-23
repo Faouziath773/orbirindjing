@@ -20,6 +20,45 @@ body {
   margin: 0;
   min-height: 100vh;
   background: #ffffff;
+  background-color: #ffffff;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("./assets/background-dj.png") center/cover no-repeat fixed;
+  filter: none;
+  transform: none;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  body {
+    background-image: url("./assets/background-dj-mobile.png");
+    background-position: center top;
+    background-size: cover;
+  }
+
+  body::before {
+    background-image: url("./assets/background-dj-mobile.png");
+    filter: none;
+  }
+
+  body::after {
+    background: rgba(0, 0, 0, 0.18);
+  }
 }
 
 a {

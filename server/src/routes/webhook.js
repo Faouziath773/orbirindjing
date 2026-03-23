@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import express from "express";
 import { fetchTransaction } from "../fedapay.js";
-import { finalizeRegistration } from "../registration.js";
+import { finalizeRegistration } from "../services/registrationService.js";
 
 const router = express.Router();
 
@@ -39,8 +39,6 @@ router.post("/fedapay/webhook", async (req, res) => {
 
     const payload = req.body?.data || req.body || {};
     const transactionId = payload.id || payload.transaction_id;
-    const status = payload.status;
-
     if (!transactionId) {
       return res.status(400).send("Missing transaction id");
     }
