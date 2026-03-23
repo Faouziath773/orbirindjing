@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useI18n } from "../lib/i18n";
 import feelTheBeatImg from "../assets/feel-the-beat.png";
 import glowMixImg from "../assets/glow-mix.png";

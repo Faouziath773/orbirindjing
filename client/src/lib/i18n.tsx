@@ -8,10 +8,14 @@ import {
 
 type Lang = "fr" | "en";
 
+type TranslationNode = {
+  [key: string]: TranslationValue;
+};
+
 type TranslationValue =
   | string
   | ((params?: Record<string, unknown>) => string)
-  | Record<string, TranslationValue>;
+  | TranslationNode;
 
 type Translations = Record<Lang, TranslationValue>;
 
@@ -143,7 +147,7 @@ const translations: Translations = {
         subtitle: "Suivi des inscriptions confirmées.",
         export: "Export CSV",
         search: "Rechercher par nom, téléphone, ville",
-        count: ({ count }) => `${count} candidature(s)`,
+        count: ({ count }: { count: number }) => `${count} candidature(s)`,
         table: {
           name: "Nom",
           phone: "Téléphone",
@@ -333,7 +337,7 @@ const translations: Translations = {
         subtitle: "Track confirmed registrations.",
         export: "Export CSV",
         search: "Search by name, phone, city",
-        count: ({ count }) => `${count} application(s)`,
+        count: ({ count }: { count: number }) => `${count} application(s)`,
         table: {
           name: "Name",
           phone: "Phone",
